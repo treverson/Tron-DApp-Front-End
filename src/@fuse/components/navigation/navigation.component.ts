@@ -34,7 +34,7 @@ export class FuseNavigationComponent implements OnInit
      */
     constructor(
         private router: Router,
-        private globalService:Global,
+        public globalService:Global,
         private _fuseNavigationService: FuseNavigationService,
         private _fuseSidebarService: FuseSidebarService
     )

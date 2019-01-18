@@ -6,18 +6,13 @@ export const environment = {
     production: false,
     hmr       : false,
     
-    //Ateeq System
-    /* serviceUrl: 'http://192.168.100.10:4200/api/' */
-
-     //localhost
-     /* serviceUrl: 'http://127.0.0.1:4200/api/' */
-
     //Development Server
     /* serviceUrl: 'http://35.183.152.54:4200/api/' */
+    /* serviceUrl: 'http://api.staging.healthport.io/' */
 
     //Live Server
     /* serviceUrl: 'https://healthport.io/api/' */
-    serviceUrl: 'https://api.healthport.io/'
+    /* serviceUrl: 'https://api.healthport.io/' */
 
 };
 

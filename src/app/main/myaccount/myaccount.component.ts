@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList, Inject } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, QueryList, Inject } from '@angular/core';
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Router } from '@angular/router';
@@ -75,7 +75,8 @@ export class MyaccountComponent implements OnInit {
     refPageNum: number;
     referContent: any[] = new Array();
     referBtnText: string = 'load More';
-
+    //total bandwidth
+    totalBandwidth: number;
     @ViewChild('transHistory') th;
     @ViewChild('percent-label') pl;
 
@@ -109,7 +110,7 @@ export class MyaccountComponent implements OnInit {
         'received':true,
         'new account':true,
         'loyalty bonus':true,
-        'referral reward':true,
+        'referal reward':true,
         'create allergy list':true,
         'create medication list':true,
         'create procedure history':true,
@@ -204,18 +205,21 @@ export class MyaccountComponent implements OnInit {
             .subscribe(res => {
                 if (res.code === 200) {
                     this.gSpin = false;
+                    this.totalBandwidth = res.data['bandwidth'];
                     this.single = [
                         {
                             name: 'EHR',
-                            value: res.data
+                            value: res.data['balance']
                         }
                     ];
 
                     //change percentage of graph
                     setTimeout(() => {
                         let plel = this.eRef.nativeElement.querySelector('.percent-label');
-                        plel.textContent = this.percentFormat(plel, res.data);
-                    }, 1000);
+                        plel.textContent = this.percentFormat(plel, res.data['balance']);
+                        let lbl = this.eRef.nativeElement.querySelectorAll('text[ngx-charts-count-up]');
+                        this.addTspan(lbl);
+                    }, 1200);
                 }
                 else {
                     this.gSpin = false;
@@ -250,7 +254,24 @@ export class MyaccountComponent implements OnInit {
             });
 
     }
-
+    addTspan(array) {
+        array.forEach(e => {
+            if(e.textContent.indexOf("Current") != -1) {
+                let x = e.getAttribute("x");
+                let y = e.getAttribute("y");
+                y = Math.ceil(y) + 20;
+                let dy = e.getAttribute("dy");
+                var para = document.createElementNS("http://www.w3.org/2000/svg","tspan");
+                var t = document.createTextNode("Bandwidth: "+this.totalBandwidth);
+                para.appendChild(t);
+                para.setAttribute("x", x);
+                para.setAttribute("y", y);
+                para.setAttribute("dy", dy);
+                e.appendChild(para);
+            }
+        });
+        
+    }
     percentFormat(val, tokens) {
         let percent = val.textContent.toString().replace('%', '');
         if (percent < 0.1) {

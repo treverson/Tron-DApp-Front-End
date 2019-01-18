@@ -8,14 +8,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 })
 export class DetailsComponent implements OnInit {
 
-  item: Object;
+  item: {
+    date_time: "",
+    note: "",
+    trx_id: "",
+    type: ""
+  };
 
   constructor(
     private dialogRef: MatDialogRef<DetailsComponent>,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.item = data;
-    console.log(this.item);
   }
 
   ngOnInit() {

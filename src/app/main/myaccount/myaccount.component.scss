@@ -253,6 +253,14 @@
      #in-myaccount .contents .table-body .content-items {
         width: 100%;
     }
+     #in-myaccount .contents .bandwidth-label{
+        position: absolute;
+        margin-top: 155px;
+        margin-left: -7px;
+        color: #3bcd9c;
+        font-size: 12px;
+        font-weight: normal;
+    }
      #in-myaccount .contents .table-body .content-items .no-record-text{
         text-align: center;
         font-size: 15px;
@@ -308,6 +316,9 @@
         }
          #in-myaccount .last-less-1280 .right-panel-right{
             max-width: 25% !important;
+        }
+        #in-myaccount .contents .bandwidth-label{
+            margin-top: 155px;
         }
     }
     @media (min-width: 550px) and (max-width: 768px){
@@ -366,6 +377,9 @@
          #in-myaccount .col-footer-left .first-row .title h1{
             font-size: 18px;
         }
+        #in-myaccount .contents .bandwidth-label{
+            margin-top: 155px;
+        }
     }
     @media (min-width: 550px){
         #in-title .big-title{
@@ -378,6 +392,9 @@
             max-width: 70% !important;
             max-height: 500px !important;
             padding: 20px !important;
+        }
+        #in-myaccount .contents .bandwidth-label{
+            margin-top: 155px;
         }   
     }
     @media (max-width: 550px){
@@ -477,6 +494,9 @@
             max-height: 300px !important;
             padding: 10px !important;
         }
+        #in-myaccount .contents .bandwidth-label{
+            margin-top: 155px;
+        }
     }
      #in-myaccount .wallet-large-1280{
         display: flex;
@@ -566,6 +586,9 @@
          #in-myaccount .last-less-1280 .content-items .col-footer-left{
             margin: 0px;
         }
+        #in-myaccount .contents .bandwidth-label{
+            margin-top: 150px;
+        }
     }
 
     @media (min-width: 820px){
@@ -588,6 +611,9 @@
         }
          #in-myaccount .table1-less-820{
             display: flex !important;
+        }
+        #in-myaccount .contents .bandwidth-label{
+            margin-top: 133px;
         }
     }
     mat-spinner {
